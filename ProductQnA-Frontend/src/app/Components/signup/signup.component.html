@@ -1,0 +1,98 @@
+<div class="register-section">
+    <div class="row justify-content-center">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" style="text-align: center">
+                    <h4>Register</h4>
+                </div>
+
+                <div class="card-body">
+                <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                    
+                    <div class="form-group row">
+                        <label for="email_address"  class="col-md-4 col-form-label text-md-right"><b>Email ID </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="text" formControlName="email" id="email" class="form-control" name="email" maxlength="80" required>
+                            <div *ngIf="(f.email.touched && f.email.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.email.errors?.required">Email is required</div>
+                                <div *ngIf="f.email.errors?.email">please provide valid email ID</div>
+                            </div>   
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right"><b>User Name </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="text" formControlName="username" class="form-control" maxlength="30"  required >
+                            <div *ngIf="(f.username.touched && f.username.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.username.errors?.required">username is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right"><b>First Name </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="text"  formControlName="firstname" class="form-control" maxlength="30" required >
+                            <div *ngIf="(f.firstname.touched && f.firstname.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.firstname.errors?.required">FirstName is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right"><b>Last Name </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="text" formControlName="lastname"  class="form-control" maxlength="30" required >
+                            <div *ngIf="(f.lastname.touched && f.lastname.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.lastname.errors?.required"> Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right"><b>Password </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="password" formControlName="password" id="password" class="form-control" name="password" maxlength="60" required>
+                            <div *ngIf="(f.password.touched && f.password.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.password.errors?.required">Password is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                        
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right"><b>ConfirmPassword </b><h5 style="color: red; display: inline;">*</h5></label>
+                        <div class="col-md-6">
+                            <input type="password"  formControlName="cpassword" id="cpassword" class="form-control" name="cpassword"  maxlength="60" required>
+                            <div *ngIf="(f.cpassword.touched && f.cpassword.invalid) || formSubmitAttempt" class="alert alert-danger">
+                                <div *ngIf="f.cpassword.errors?.required">Confirm Password is required.</div>
+                                <div *ngIf="f.cpassword.errors?.passwordValidator">Password and Confirm Password must be match.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                        
+                    <span class="col-md-6 offset-md-4" >
+                        <button style="margin-left: 8px" type="submit" class="btn btn-primary">Sign Up</button>&nbsp;&nbsp;&nbsp;
+                        <button type="reset" class="btn btn-primary">Cancel</button>
+                        <br>
+                        <br>
+                        <span style="margin-left: 170px">Existing user? <a routerLink="/login">Log In</a></span>
+                    </span>
+
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+</div>

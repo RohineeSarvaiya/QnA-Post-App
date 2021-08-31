@@ -1,0 +1,69 @@
+<header class="header">
+  <h2>Product Community Website</h2>
+</header>
+
+<div class="container row " >
+            
+  <div class="col-md-2">
+    <button (click)= "back()" class="btn btn-primary" style="margin-top: 16px;"><fa-icon [icon]="faArrowCircleLeft"></fa-icon></button>
+  </div>
+
+
+  
+  <div class="col-md-9 question">
+    <div>
+      <h2 style="color:black">{{question.statement}}</h2>
+    </div>
+    <div>
+      <span> .Posted by <i><a class="btnClass" role="button" (click)="profile(question.userName)">{{question.userName}}</a></i> on <i><b><a>{{question.createdDate}}</a></b></i></span>
+    </div>
+    <hr />
+    <div>
+      <i><span><b> ProductCode : </b> <a>{{question.productCode}}</a></span></i><br>
+      <i><span><b> Label : </b><a>{{question.label}}</a></span></i>
+    </div>
+     <br>
+    <div >
+      <a style="color: black;" [innerHtml]="question.description"></a>
+    </div>
+    
+    <hr />
+    
+
+    <div >
+      <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+        <div class="form-group">
+          <textarea class="form-control" [formControlName]="'text'" placeholder="Post your comment here...." required></textarea>
+          <div *ngIf="!commentForm.get('text')?.valid &&  formSubmitAttempt" class="alert alert-danger" style="margin-top: 10px;">
+            <div *ngIf="commentForm.get('text')?.errors?.required">please type something.</div>
+          </div>
+        </div>
+        <button  style="margin-top: 20px;float: right;"class="btn btn-primary" type="submit" >Comment</button>
+      </form>
+    </div>
+    <hr  style="margin-top: 80px;color: black;"/>
+    
+   
+
+    <div >
+      <h4><fa-icon [icon]="faComments"></fa-icon> Comments :</h4>
+    </div>
+
+    <div style="margin-top: 30px;" *ngFor="let comment of comments.slice().reverse()">
+      <div >
+        <div >
+          <span> .Posted by <i><a class="btnClass" role="button" (click)="profile(comment.userName)">{{comment.userName}}</a></i> on <i><b><a>{{comment.createdDate}}</a></b></i></span>
+        </div>
+      <div style="color:black;">{{comment.text}}</div>
+        <div >
+          <fa-icon class="like" (click)="LikeComment(comment)" [icon]="faHeart" ></fa-icon><b> &nbsp; {{comment.likeCount}} &nbsp; Likes</b>
+        </div>
+      <hr />
+    </div>
+    
+
+  </div>
+ 
+
+  </div>
+  </div>

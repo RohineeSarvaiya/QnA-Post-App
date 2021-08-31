@@ -1,0 +1,60 @@
+<header class="header">
+  <h2>Product Community Website</h2>
+</header>
+
+<div class="container">
+
+  <div>
+    <table width="100%">
+      <tr>
+        <td><h3 style="width: 500px;color:rgb(11, 63, 160)">Welcome {{username}} !</h3>
+          <div style="color:#878A8C;">You have posted Question <b>{{questionLength}}</b> time(s) and Comment
+            <b>{{commentLength}}</b> time(s). You can check your question and comment history below.
+          </div></td>
+        <td><button (click)= "back()" style="float: right;"class="btn btn-primary"><fa-icon [icon]="faArrowCircleLeft"></fa-icon></button></td>
+      </tr>
+    </table>
+  </div>
+  <hr/>
+  <br>
+
+  <div>
+    <h4 style="color: cornflowerblue;">Your Questions :</h4>
+  </div>
+
+  <div class="show" *ngFor="let question of questions">        
+    
+    <div>
+      <span> .Posted by <b>You</b> on <i><b>{{question.createdDate}}</b></i></span>
+    </div>
+    <hr/>
+
+    <div>
+      <h2 style="color: black;">{{question.statement}}</h2>
+    </div>
+    <div>
+      <i><span> <b>ProductCode : </b> <a>{{question.productCode}}</a></span></i><br>
+      <i><span><b> Label : </b> <a>{{question.label}}</a></span></i>
+    </div>
+    <hr/>
+
+    <div>
+      <span>
+        <fa-icon [icon]="faComments"></fa-icon> Comments({{question.commentCount}})&nbsp;&nbsp;&nbsp;&nbsp;
+        <button  (click)="viewQuestion(question.id)" class="btn btn-primary">post comment</button>
+      </span>
+    </div>
+
+  </div>
+  <hr style="margin-bottom: 40px;"/>
+
+
+  <div style="margin-bottom: 20px;">
+    <h4 style="color: cornflowerblue;">Your Comments :</h4>
+  </div>
+
+  <div *ngFor="let comment of comments">
+    <div class="show" style="color: black;">{{comment.text}}</div>      
+  </div>
+
+</div>

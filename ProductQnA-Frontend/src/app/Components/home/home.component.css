@@ -1,0 +1,65 @@
+.likebox {    
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    font-size: 1em;    
+}
+
+.like:hover {
+    color: red;
+}
+
+.likecount {
+    font-weight: bold;    
+}
+
+.account-icon {
+    border-radius: 4px;
+    float: left;
+    margin-right: 5px;
+    max-height: 24px;
+    max-width: 24px;
+}
+
+.question {
+    --post-line-color: #ccc;    
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+    margin-left: 1px;    
+}
+
+.searchinput {    
+  height: 35px;
+  width: 500px;  
+  border-radius: 10px;
+  border: 2px solid #ccc;  
+  border-radius: 10px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid #ccc;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.searchtype {    
+    height: 35px;
+    width: 123px;    
+    border-radius: 10px;
+    border: 2px solid #ccc ;   
+    border-radius: 10px;
+}
+
+.searchtype:focus {
+      outline: none;
+}
+   

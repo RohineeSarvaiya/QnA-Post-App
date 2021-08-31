@@ -1,0 +1,107 @@
+<header class="header" style="margin-bottom: 30px;">
+    <h2>Product Community Website</h2>
+</header>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9">
+
+        <div >
+          <form [formGroup]="searchForm"  (ngSubmit)="search()">
+            <input type="text" class="searchinput" id="keyword"  [formControlName]="'keyword'" name="keyword" placeholder="  search here..." required >&nbsp;&nbsp;
+            <label style="font-size: 20px;color: #878A8C;"><b>Search type :</b></label>&nbsp;&nbsp;
+            <select  class="searchtype" [formControlName]="'searchtype'"> 
+              <option> QuestionText </option>  
+              <option> ProductCode </option>  
+              <option> Useremail </option>  
+              <option> Label </option>
+              <option> Date(dd-mm-yyyy) </option>  
+            </select> &nbsp;&nbsp;        
+            <button type="submit" class="btn btn-info  "><fa-icon   [icon]="faSearch" ></fa-icon>  </button>
+          </form> 
+        </div>
+
+        <div >
+          <div  ngbDropdown class="float-right" style="margin-top: 15px;margin-bottom: 20px;">
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button style="color:black; background-color:aliceblue" (click)="sort('likeCount')"  ngbDropdownItem>Most Liked</button>
+              <button style="color:black; background-color:aliceblue" (click)="sort('userName')"  ngbDropdownItem>Author</button>
+              <button style="color:black; background-color:aliceblue" (click)="sort('createdDate')"  ngbDropdownItem>Most Recent</button>
+              <button style="color:black; background-color:aliceblue" (click)="sort('productCode')"  ngbDropdownItem>Product Code</button>
+              <button style="color:black; background-color:aliceblue" (click)="sort('commentCount')"  ngbDropdownItem>Most Commented</button>
+            </div>
+            <button (click)= "back()" class="btn btn-primary" ><fa-icon [icon]="faArrowCircleLeft"></fa-icon></button>
+            <button class="btn btn-primary" style="margin-left: 30px;" ngbDropdownToggle>Sort By </button>
+          </div>
+        </div>
+
+        <div *ngIf="questions$.length==0 && searchAttemted" >
+            <h4 style="color: red;">No Questions as per Your Input  :(</h4>
+        </div>
+        
+    
+        <div class="row question" *ngFor="let question of questions$ | sort : sortType">
+              
+          <div class="col-md-1">        
+            <div class="d-flex flex-column likebox">
+              <div class="p-2">
+                <fa-icon (click)="LikeQuestion(question)"  class="like" [icon]="faHeart"  ></fa-icon>
+              </div>
+              <div class="p-2 likecount">{{question.likeCount}}</div>
+              <div class="p-2 likecount">Likes</div>
+            </div>
+          </div>
+       
+          <div class="col-md-11">
+            <div>
+              <span> .Posted by <i><a class="btnClass" role="button" (click)="profile(question.userName)">{{question.userName}}</a></i> on <i><b>{{question.createdDate}}</b></i></span>
+            </div>
+            <hr />
+
+            <div >
+              <h2 style="color: black;">{{question.statement}}</h2>
+            </div>
+            <div>
+              <i><span> <b>ProductCode :  </b><a>{{question.productCode}}</a></span></i><br>
+              <i><span> <b>Label : </b><a>{{question.label}}</a></span></i>
+            </div>
+            <hr />
+
+            <div>
+              <span>
+                <a><fa-icon [icon]="faComments"></fa-icon> Comments({{question.commentCount}})</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button (click)="viewQuestion(question.id)" class="btn btn-primary">post comment</button>
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-3" >
+
+      <h1><fa-icon style="margin-left: 140px;" [icon]="faUserCircle"></fa-icon></h1>
+
+      <div  style="margin-left: 90px;margin-bottom: 10px;" ngbDropdown class="float-right ">        
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="goToUserProfile()" ngbDropdownItem>Profile</button>
+          <button (click)="logout()" ngbDropdownItem>Logout</button>
+        </div>
+        <button class="btn-primary" id="dropdownBasic1" ngbDropdownToggle>
+          <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+          {{username}}
+        </button>
+      </div>   
+
+      <h6 style="margin-left: 70px; margin-top: 30px; color: rgb(37, 37, 184);">Have Question? Ask here..</h6>
+      <button type="submit" class="btn btn-primary" style="margin-left: 105px;" (click)="askQuestion()">Ask Question</button>
+     
+    </div>
+
+  </div> 
+</div>
+

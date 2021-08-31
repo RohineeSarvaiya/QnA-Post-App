@@ -1,0 +1,74 @@
+<header class="header">
+  <h2>Product Community Website</h2>
+</header>
+
+<div class="container">
+
+  <div class="row">
+  <hr />
+
+  <div class="col-md-2"></div>
+
+  <div class="create-question-container col-md-8">
+  <form class="question-form" [formGroup]="questionForm" >
+  <div class="form-group">
+
+    <div class="create-question-heading"><h4>Ask Your Question here....</h4></div>
+    <hr />
+
+    <div style="margin-bottom: 15px;">
+      <input type="text" [formControlName]="'statement'" class="form-control" style="margin-top: 5px;" placeholder="Question Statement**" maxlength="150" required>
+      <div *ngIf="(!questionForm.get('statement')?.valid && questionForm.get('statement')?.touched ) || formSubmitAttempt" class="alert alert-danger" style="margin-top: 10px;">
+        <div *ngIf="questionForm.get('statement')?.errors?.required">please enter question statement</div>
+      </div>
+    </div>
+  
+    <div style="margin-bottom: 15px;"> 
+      <input type="text" class="form-control" [formControlName]="'productCode'" style="margin-top: 5px" placeholder="Product Code**"  maxlength="60" required>
+      <div *ngIf="(!questionForm.get('productCode')?.valid && questionForm.get('productCode')?.touched ) || formSubmitAttempt" class="alert alert-danger" style="margin-top: 10px;">
+        <div *ngIf="questionForm.get('productCode')?.errors?.required">please enter product code</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <input type="text" class="form-control" [formControlName]="'label'" style="margin-top: 5px" placeholder="Label/Tag**" maxlength="60" required>
+      <div *ngIf="(!questionForm.get('label')?.valid && questionForm.get('label')?.touched ) || formSubmitAttempt" class="alert alert-danger" style="margin-top: 10px;">
+         <div *ngIf="questionForm.get('label')?.errors?.required">please enter question label/tag.</div>
+      </div>
+    </div>
+  
+    <div>
+      <editor [formControlName]="'description'" [init]="{
+          height: 500,menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic backcolor | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | removeformat | help'}" >
+      </editor>
+      
+    </div>
+           
+    <span>
+      <div style="margin-top: 5px" class="float-right">
+          <button (click)="discardQuestion()" class="btnDiscard">Discard</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="askQuestion()"class="btnCreateQuestion">Post Question</button>
+      </div>
+    </span>
+
+  </div>
+  </form>
+  </div>
+
+  <div class="col-md-2"></div>
+     
+  </div>
+  
+</div>
+
+
+

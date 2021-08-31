@@ -1,0 +1,23 @@
+.header {
+  background-color: rgb(29, 107, 196);
+  color: white;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.alert-danger {
+  height: 10px;
+  font-size: 12px;
+  padding-top: 2px;
+  background-color: white;
+  border: none;
+}
+

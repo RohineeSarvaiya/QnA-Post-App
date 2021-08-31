@@ -1,0 +1,17 @@
+.register-section{
+    margin: 100px;
+    margin-top: 50px;
+}
+
+.alert-danger{
+    height: 10px;
+    font-size: 12px;
+    padding-top: 2px;
+    background-color: white;
+    border: none;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
